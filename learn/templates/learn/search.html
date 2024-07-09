@@ -1,0 +1,18 @@
+{% extends "learn/layout.html" %}
+{% load static %}
+{% block title %} Search {% endblock %}
+
+{% block body %}
+    <div id="searched_moves">
+        <h2>You searched for: {{ searched }}</h2>
+        {% for move in moves %}
+            <div class="card m-3" style="width: 100%;">
+                <iframe class="card-img-top" src="{{move.get_embed_url}}"  style="height: 300px;"></iframe>
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{{ move.name }}</strong></h5>
+                    <p class="card-text"><strong>Level:</strong> {{ move.belt }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

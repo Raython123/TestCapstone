@@ -1,0 +1,44 @@
+{% extends "user/layout.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block body %}
+
+    <h2>Register</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        </div>
+        <div class="form-group">
+            <label for="judo-belts">Choose your belt:</label>
+            <select class="form-control" id="judo-belts" name="belts">
+                <option value="white">White</option>
+                <option value="yellow">Yellow</option>
+                <option value="orange">Orange</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="brown">Brown</option>
+                <option value="black">Black</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+
+    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+{% endblock %}

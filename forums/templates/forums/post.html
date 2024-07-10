@@ -1,0 +1,34 @@
+{% load static %}
+
+{% block body %}
+    <h2> {{ post.poster}}'s Post</h2>
+    <div class="card border-danger m-3">
+        <p class="card-text m-3">{{ post.content }}</p>
+        <div class="text-right m-3 timestamp">{{ post.timestamp }}</div>
+    </div>
+    <div id="comments">
+        {% if comments %}
+            {% for commented in comments %}
+                <div class="card border-success m-3 post" data-postid="{{ commented.id }}" style="width: 90rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ commented.commenter }}</h5>
+                    <!--Comment of shame: I spent half an hour debugging my code, turns out i added an extra m to commented-->
+                    <p class="card-text m-3">{{ commented.comment }}</p>
+                    <div class="text-right timestamp">{{ commented.timestamp }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="fixed-bottom mb-3 m-3">
+        <form id="commentForm" method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3 ">
+                <textarea class="form-control" id="commentContent" rows="3" number=300></textarea>
+                <div class="input-group-append">
+                    <input type="submit" value="Comment" class="btn btn-outline-success">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

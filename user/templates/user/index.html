@@ -7,27 +7,9 @@
 {% block body %}
     <div class="card m-3" style="width: 90rem;">
         <div class="card-body">
-            <p class="card-text"> <strong>Username:</strong> </p>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">@</span>
+                <h2 class="card-title">{{ request.user.username }} </h2>
+                    <p class="card-text"><strong>Belt: </strong> {{ request.user.belt }}</p>
                 </div>
-                <input type="text" class="form-control" placeholder="{{ request.user.username }}" aria-label="Username" aria-describedby="basic-addon1">
-              </div>
-              <div class="form-group">
-                    <input type="hidden" id="userbelt" value="{{request.user.belt}}">
-                    <label for="judo-belts"><strong>Belt:</strong></label>
-                    <select class="form-control" id="judo-belts" name="belts">
-                        <option value="white">White</option>
-                        <option value="yellow">Yellow</option>
-                        <option value="orange">Orange</option>
-                        <option value="green">Green</option>
-                        <option value="blue">Blue</option>
-                        <option value="brown">Brown</option>
-                        <option value="black">Black</option>
-                    </select>
-                </div>
-            <button class="btn btn-primary">Edit</button>
         </div>
     </div>
 {% endblock %}

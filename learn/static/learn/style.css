@@ -19,3 +19,12 @@
     background-color: #543310;
     color: white;
 }
+
+div#default_moves{
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    flex:auto;
+}

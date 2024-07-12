@@ -1,0 +1,46 @@
+{% extends "forums/layout.html" %}
+{% load static %}
+
+{% block title %} Forums {% endblock %}
+
+{% block body %}
+<div id="big_container">
+    <div id="new_post">
+        <div class="card m-3">
+            <div class="card-body">
+                <h3 class="card-title"><strong>New Post:</strong></h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ newPost.as_p }}
+                    <input type="submit" value="Post" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="all_posts">
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card post" data-postid="{{ post.id }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.poster }}</h5>
+                            <p class="card-text">{{ post.content }}</p>
+                            <div class="text-right timestamp">{{ post.timestamp }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <nav>
+            <ul class="pagination">
+                {% if posts.has_previous %}
+                    <li class="page-item m-3"><a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% if posts.has_next %}
+                    <li class="page-item m-3"><a class="page-link" href="?page={{ posts.next_page_number }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}

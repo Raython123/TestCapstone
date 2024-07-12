@@ -1,0 +1,17 @@
+{% extends "user/layout.html" %}
+{% load static %}
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body %}
+    <div id="msgdiv" class="alert alert-warning alert-dismissible fade show" role="alert"></div>
+    <div class="card m-3">
+        <div class="card-body">
+            <h2 class="card-title">{{ request.user.username }}</h2>
+            <p class="card-text"><strong>Belt: </strong> {{ request.user.belt }}</p>
+            <button id="editprofile" class="btn btn-primary">Edit</button>
+        </div>
+        <div class="card-body" id="editContainer"></edit>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+.btn-outline-orange {
+    background-color: white;
+    border-color: orange;
+    color: orange;
+}
+
+.btn-outline-orange:hover {
+    background-color: orange;
+    color: white;
+}
+
+.btn-outline-brown {
+    background-color: white;
+    border-color: #543310;
+    color: #543310;
+}
+
+.btn-outline-brown:hover {
+    background-color: #543310;
+    color: white;
+}
+
+div#default_moves{
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    flex:auto;
+}
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
+}

@@ -53,6 +53,7 @@ function cardify(move,container){
     iframe.className = 'card-img-top';
     iframe.style.height = '300px';
     iframe.src = move.fields.video.replace("youtu.be/", "youtube.com/embed/");
+    iframe.allowFullScreen = true;
     // Inside body
     let cardbody = document.createElement('div');
     cardbody.className = 'card-body';
@@ -82,6 +83,7 @@ function search_cardify(name,video,belt,container){
     iframe.className = 'card-img-top';
     iframe.style.height = '300px';
     iframe.src = video.replace("youtu.be/", "youtube.com/embed/");
+    iframe.allowFullscreen = true;
     // Inside body
     let cardbody = document.createElement('div');
     cardbody.className = 'card-body';

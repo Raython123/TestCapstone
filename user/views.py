@@ -7,12 +7,24 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django import forms
 from .models import *
-
+import json
 # Forms
 
 # Create your views here.
 
 def index(request):
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        if data.get("username") is not None:
+            notvalid_username = User.objects.filter(username=data['username']).exists()
+            if notvalid_username:
+                return JsonResponse({'error':f'{data['username']} already exists'})
+            else:
+                user = User.objects.get(username=request.user.username)
+                user.username = data['username']
+                user.belt = data["belt"]
+                user.save()
+                return JsonResponse({'success':'Success'})
     if request.user.is_authenticated:
         return render(request, "user/index.html")
     else:

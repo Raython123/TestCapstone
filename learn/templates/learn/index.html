@@ -37,7 +37,7 @@
             {% for move in moves %}
                 <div class="col-12 col-md-6 col-lg-4 mb-4">
                     <div class="card">
-                        <iframe class="card-img-top" src="{{ move.get_embed_url }}" style="height: 300px;"></iframe>
+                        <iframe class="card-img-top" src="{{ move.get_embed_url }}" allowfullscreen style="height: 300px;"></iframe>
                         <div class="card-body">
                             <h5 class="card-title"><strong>{{ move.name }}</strong></h5>
                             <p class="card-text"><strong>Level:</strong> {{ move.belt }}</p>

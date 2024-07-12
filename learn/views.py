@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from fuzzywuzzy import process
-
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 # Create your views here.
 
+@login_required(login_url="/login",redirect_field_name='')
 def index(request):
     belt = Belt.objects.get(belt=request.user.belt.title())
     moves = belt.moves.all()

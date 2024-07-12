@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.urls import reverse
 from django.core.paginator import Paginator
 from django import forms
-
+from django.contrib.auth.decorators import login_required
 import json
 from .models import *
 from user.models import User
@@ -12,6 +12,7 @@ class NewContent(forms.Form):
     content = forms.CharField(label='',max_length=300, widget=forms.Textarea)
 
 # Create your views here.
+@login_required(login_url="/login",redirect_field_name='')
 def index(request):
     if request.method == "POST":
         form = NewContent(request.POST)
@@ -28,7 +29,7 @@ def index(request):
         'newPost':NewContent(),
         'posts': page,
     })
-
+@login_required(login_url="/login",redirect_field_name='')
 def room(request, postid):
     try:
         user = User.objects.get(username=request.user.username)
